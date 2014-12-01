@@ -61,9 +61,9 @@ public class JSONEventLayoutV1 extends Layout {
 
     public String format(LoggingEvent loggingEvent) {
         threadName = loggingEvent.getThreadName();
-        timestamp = loggingEvent.getTimeStamp();
+        timestamp = loggingEvent.timeStamp;
         exceptionInformation = new HashMap<String, Object>();
-        mdc = loggingEvent.getProperties();
+        mdc = Log4j1_2_14Util.getProperties(loggingEvent);
         ndc = loggingEvent.getNDC();
 
         logstashEvent = new JSONObject();
